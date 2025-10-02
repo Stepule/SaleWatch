@@ -53,7 +53,8 @@ class PriceScraper: #
 
             if price_element:
                 price_text = price_element.text
-                cleaned_text = price_text.replace('\xa0', '').replace('CZK', '').replace(',', '.').strip()
+                temp_clean = price_text.replace('\xa0', '').replace(' ', '').replace('.', '')
+                cleaned_text = temp_clean.replace(',', '.').replace('CZK', '').strip()
                 price = float(cleaned_text) # prevedeni na cislo
                 print(f"Price found: {price}")
                 return price
